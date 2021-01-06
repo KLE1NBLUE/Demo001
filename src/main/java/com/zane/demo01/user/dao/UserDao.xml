@@ -30,4 +30,17 @@
                 #{status}
             );
     </insert>
+
+    <select id="getUserById" parameterType="java.lang.Integer" resultType="com.zane.demo01.user.entity.UserEntity">
+        select * from user where id = ${id}
+    </select>
+
+    <update id="updateUserById" parameterType="com.zane.demo01.user.entity.UserEntity">
+        UPDATE `test`.`user`
+        SET
+        `username` = #{username},
+        `password` = #{password}
+         WHERE
+            (`id` = ${id});
+    </update>
 </mapper>

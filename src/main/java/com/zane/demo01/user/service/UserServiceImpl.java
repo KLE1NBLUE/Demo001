@@ -2,7 +2,6 @@ package com.zane.demo01.user.service;
 
 import com.zane.demo01.user.dao.UserDao;
 import com.zane.demo01.user.entity.UserEntity;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +30,15 @@ public class UserServiceImpl implements UserService{
         userEntity.setCreatetime(new Date());
         userEntity.setStatus(1);
         userDao.save(userEntity);
+    }
+
+    @Override
+    public UserEntity getUserById(Integer id) {
+        return userDao.getUserById(id);
+    }
+
+    @Override
+    public void updateUserById(UserEntity userEntity) {
+        userDao.updateUserById(userEntity);
     }
 }

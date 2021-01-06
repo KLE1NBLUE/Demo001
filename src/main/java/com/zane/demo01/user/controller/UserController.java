@@ -2,6 +2,7 @@ package com.zane.demo01.user.controller;
 
 import com.zane.demo01.user.entity.UserEntity;
 import com.zane.demo01.user.service.UserService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +39,21 @@ public class UserController {
     @ResponseBody//
     public String save(@RequestBody  UserEntity userEntity){
         userService.save(userEntity);
+        return "success";
+    }
+
+    //根据用户id查询用户信息
+    @RequestMapping("/getUserById")
+    @ResponseBody
+    public UserEntity getUserById(Integer id){
+        return  userService.getUserById(id);
+    }
+
+    //根据id修改用户信息
+    @RequestMapping("/updateUserById")
+    @ResponseBody
+    public String updateUserById(@RequestBody  UserEntity userEntity){
+        userService.updateUserById(userEntity);
         return "success";
     }
 }
